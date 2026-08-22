@@ -1,0 +1,224 @@
+/* AI Menu Audit — front-end form.
+   Deliberately self-contained so it looks the same in any theme. */
+
+.ma-wrap {
+	--ma-accent: #c0392b;
+	--ma-ink: #1d1d1f;
+	--ma-muted: #6e6e73;
+	--ma-line: #e2e2e7;
+	--ma-bg: #faf8f5;
+
+	max-width: 680px;
+	margin: 0 auto;
+	font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color: var(--ma-ink);
+	box-sizing: border-box;
+}
+
+.ma-wrap *,
+.ma-wrap *::before,
+.ma-wrap *::after { box-sizing: inherit; }
+
+.ma-form {
+	background: #fff;
+	border: 1px solid var(--ma-line);
+	border-radius: 16px;
+	padding: 28px 26px 26px;
+}
+
+.ma-title {
+	margin: 0 0 6px;
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--ma-ink);
+}
+
+.ma-sub {
+	margin: 0 0 24px;
+	color: var(--ma-muted);
+	font-size: 15px;
+}
+
+.ma-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 14px;
+}
+
+@media (max-width: 560px) {
+	.ma-grid { grid-template-columns: 1fr; }
+	.ma-form { padding: 22px 18px; }
+}
+
+.ma-field { display: block; margin-bottom: 16px; }
+
+.ma-field > span {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.ma-field em { color: var(--ma-accent); font-style: normal; }
+
+.ma-field input,
+.ma-field textarea {
+	width: 100%;
+	padding: 11px 13px;
+	border: 1px solid var(--ma-line);
+	border-radius: 9px;
+	background: #fff;
+	font: inherit;
+	font-size: 15px;
+	color: var(--ma-ink);
+	transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.ma-field textarea { resize: vertical; min-height: 150px; line-height: 1.55; }
+
+.ma-field input:focus,
+.ma-field textarea:focus {
+	outline: none;
+	border-color: var(--ma-accent);
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, .06);
+}
+
+.ma-field.ma-invalid input,
+.ma-field.ma-invalid textarea { border-color: var(--ma-accent); }
+
+/* Upload */
+.ma-upload { margin: -4px 0 18px; }
+
+.ma-file {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+	cursor: pointer;
+}
+
+.ma-file input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.ma-file-btn {
+	display: inline-block;
+	padding: 8px 15px;
+	border: 1px solid var(--ma-line);
+	border-radius: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	background: #fff;
+}
+
+.ma-file:hover .ma-file-btn { background: var(--ma-bg); }
+
+.ma-file input:focus-visible + .ma-file-btn {
+	outline: 2px solid var(--ma-accent);
+	outline-offset: 2px;
+}
+
+.ma-file-name { font-size: 13px; color: var(--ma-muted); }
+
+/* Consent */
+.ma-consent {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: var(--ma-muted);
+	cursor: pointer;
+}
+
+.ma-consent input { margin-top: 4px; flex: none; }
+
+/* Honeypot */
+.ma-hp {
+	position: absolute !important;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Submit */
+.ma-submit {
+	width: 100%;
+	padding: 14px 20px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--ma-accent);
+	color: #fff;
+	font: inherit;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: filter .15s ease;
+}
+
+.ma-submit:hover:not(:disabled) { filter: brightness(1.08); }
+.ma-submit:disabled { opacity: .55; cursor: default; }
+
+.ma-error {
+	margin: 14px 0 0;
+	padding: 11px 14px;
+	border-radius: 9px;
+	background: #fdf0ee;
+	color: #a3271a;
+	font-size: 14px;
+}
+
+/* Loading */
+.ma-loading {
+	text-align: center;
+	padding: 56px 24px;
+	background: #fff;
+	border: 1px solid var(--ma-line);
+	border-radius: 16px;
+}
+
+.ma-spinner {
+	width: 38px;
+	height: 38px;
+	margin: 0 auto 20px;
+	border: 3px solid var(--ma-line);
+	border-top-color: var(--ma-accent);
+	border-radius: 50%;
+	animation: ma-spin 850ms linear infinite;
+}
+
+@keyframes ma-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+	.ma-spinner { animation-duration: 3s; }
+}
+
+.ma-loading-title { margin: 0 0 4px; font-size: 18px; font-weight: 600; }
+.ma-loading-step { margin: 0; font-size: 14px; color: var(--ma-muted); min-height: 1.6em; }
+
+/* Result */
+.ma-result {
+	background: #fff;
+	border: 1px solid var(--ma-line);
+	border-radius: 16px;
+	padding: 26px 24px;
+}
+
+.ma-actions { margin-top: 26px; text-align: center; }
+
+.ma-actions a {
+	display: inline-block;
+	padding: 12px 22px;
+	border-radius: 9px;
+	background: var(--ma-accent);
+	color: #fff;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+}
